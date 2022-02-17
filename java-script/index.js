@@ -50,6 +50,8 @@ function calculateInput() {
         
         alert('Clothes input must be a positive number...!');
     }
+
+   
     else {
         const totalExpenses = parseInt(inputFood.value) + parseInt(inputRent.value) + parseInt(inputClothes.value);
     
