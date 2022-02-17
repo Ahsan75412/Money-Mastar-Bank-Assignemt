@@ -14,7 +14,7 @@ const balance = document.getElementById('balance');
 function calculateInput() {
 
     if (isNaN(parseInt(inputIncome.value))) {
-        inputIncome.classList.toggle('border-red-600');
+       
         alert('Income input must be number...!');
         return;
     }
@@ -43,7 +43,7 @@ function calculateInput() {
     }
 
     else if (parseInt(inputRent.value) < 0) {
-        inputRent.classList.toggle('border-red-600');
+        
         alert('Rent input must be a positive number...!');
     }
     else if (parseInt(inputClothes.value) < 0) {
@@ -59,7 +59,36 @@ function calculateInput() {
         document.getElementById('totalExpenses').innerText = totalExpenses;
         document.getElementById('balance').innerText = balance;
     }
+
+    
 }
 
 
 
+//calculate the saving value bonus
+
+function savingInput() {
+    if (isNaN(parseInt(inputSaving.value))) {
+       
+        alert('Save input must be number...!');
+        return;
+    }
+    else if (!(parseInt(inputSaving.value) > 0 && parseInt(inputSaving.value) < 101)) {
+       
+        alert('Save input must be a between 1 to 100..!');
+        return;
+    }
+    else {
+        const savingAmount = (parseInt(inputIncome.value) / 100 ) * parseInt(inputSaving.value);
+        
+        const remainingBalance = parseInt(balance.innerText) - savingAmount; 
+        console.log(remainingBalance);
+        if (remainingBalance < 0) {
+            alert(inputSaving.value + '% saving not possible..!');
+            return;
+        }
+    
+        document.getElementById('savingAmount').innerText = savingAmount;
+        document.getElementById('remainingBalance').innerText = remainingBalance;
+    }
+}
